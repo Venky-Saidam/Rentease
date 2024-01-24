@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentease Web App</title>
+   <link rel="stylesheet" href="upload.css">
+   
+</head>
+<body>
+  
+  <div class="upload-box">
+    <h1>Upload</h1>
+  <form>
+  <label for="fileInput"> Select file </label>
+  <input type="file" id="fileInput" required>
+  <label for="about">About </label>
+  <input type="text" id="about" placeholder="Something about product" minlength="8" required>
+  <progress value="0" max="100" id="uploader">0%</progress>
+  <button onclick="uploadFile()" id="submit">Upload </button>
+  </form>
+  </div>
+
+  
+</body>
+<script type="module">
+
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getStorage, ref, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+  
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCDjtpSvfB3VatHxnyEc7YJFXO5OJvScUk",
+    authDomain: "rentease-3f9ec.firebaseapp.com",
+    databaseURL: "https://rentease-3f9ec-default-rtdb.firebaseio.com",
+    projectId: "rentease-3f9ec",
+    storageBucket: "rentease-3f9ec.appspot.com",
+    messagingSenderId: "487513709327",
+    appId: "1:487513709327:web:bbc656252097b09b213c7a"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const storage = getStorage();
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+  // Set up the event listener after the DOM is loaded
+  document.getElementById('submit').addEventListener('click', function (event) {
+     event.preventDefault();
+      uploadFile();
+    });
+});
+
+function uploadFile() {
+const fileInput = document.getElementById('fileInput');
+const file = fileInput.files[0];
+
+if (file) {
+const storageRef = ref(storage, file.name);
+const uploadTask = uploadBytesResumable(storageRef, file);
+
+// Update progress bar
+uploadTask.on('state_changed',
+(snapshot) => {
+const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+document.getElementById('uploader').value = progress;
+},
+(error) => {
+ console.error('Error uploading file:', error);
+ alert('Error uploading file.');
+ },
+() => {
+ // File uploaded successfully
+ 
+  alert('File uploaded successfully!');
+  location.reload();
+});
+ } else {
+  alert('Please select a file to upload.');
+ };
+};
+
+  </script>
+
+</html>
+
+  
+
+    

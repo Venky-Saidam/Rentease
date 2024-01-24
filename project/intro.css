@@ -1,0 +1,58 @@
+
+body{ background-image: url(bicycle-1704614288176-814.jpg);
+background-repeat: no-repeat;
+background-position: center;
+background-attachment: fixed;
+background-size: cover;}
+
+#about{
+    padding: 0.8%;
+    float: inline-end;
+    font-size: 1.5em;
+    background-color: rgb(236, 84, 229);
+    border-radius: 10px;
+}
+
+#box{ 
+    transform: translateY(2%);
+    width: auto;
+    height: auto;
+    padding: 4%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+#one{ 
+     color: rgb(0, 183, 255);
+     font-size: 3.5em;
+     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;     
+     font-weight: 550;}
+
+#two{ 
+      color: rgb(30, 225, 38);
+      font-size: 2.3em;
+      font-family: cursive;
+}
+
+#three{
+    font-size: 2.1em;
+    font-style: normal;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    transform: translateX(40%);
+}
+
+a{  text-decoration: none;
+    width: fit-content;
+    text-align: center;
+    display: flex;
+    border-radius: 5px;
+    background-color: rgb(104, 80, 240);
+    padding: 2%;
+    border: 1px solid;
+    border-color: rgb(81, 241, 137);
+    color: honeydew;}
